@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default = True ,cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['project-greatkart-env.eba-g3xvxdmz.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -55,7 +55,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
+SESSION_EXPIRE_SECONDS = 300  # 300 seconds = 5 minutes
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_TIMEOUT_REDIRECT = '/accounts/login/'  # redirect to whatever page
 
 ROOT_URLCONF = 'project.urls'
 
@@ -159,3 +163,8 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USER_TLS = config('EMAIL_USER_TLS', cast=bool)
+
+
+# Access Key ID:
+# AKIAU7IH33DVP6BJV6TT
+# Secret Access Key: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
