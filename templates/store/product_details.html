@@ -64,16 +64,16 @@
                   <div class="item-option-select">
                     <div class="btn-group  btn-group-sm btn-group-toggle" data-toggle="buttons">
                       <label class="btn btn-light">
-                        <input type="radio" name="radio_color"> Silver
+                        <input type="radio" name="radio_color"> medium
                       </label>
                       <label class="btn btn-light">
-                        <input type="radio" name="radio_color" > Gray
+                        <input type="radio" name="radio_color" > large
                       </label>
                       <label class="btn btn-light active">
-                        <input type="radio" name="radio_color checked"> Gold
+                        <input type="radio" name="radio_color checked"> xl
                       </label>
                       <label class="btn btn-light">
-                        <input type="radio" name="radio_color"> Black
+                        <input type="radio" name="radio_color"> xxl
                       </label>
                     </div> 
                     </div>
@@ -87,7 +87,7 @@
               <a href="#" class="btn  btn-success"> <span class="text">Added to cart</span> <i class="fas fa-check"></i></a>
               <a href="{% url 'cart' %}" class="btn  btn-outline-primary"> <span class="text">View cart</span> <i class="fas fa-eye"></i></a>
             {% else %}
-            <a href="{% url 'add_cart' %}"  class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
+            <a href="{% url 'add_cart' cart_item.product.id %}"  class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
         
             {% endif %} 
         {% endif %}     

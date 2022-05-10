@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from ctypes import cast
 from pathlib import Path
 
-from django import conf
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,9 +56,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
-SESSION_EXPIRE_SECONDS = 300  # 300 seconds = 5 minutes
-SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
-SESSION_TIMEOUT_REDIRECT = '/accounts/login/'  # redirect to whatever page
+# SESSION_EXPIRE_SECONDS = 300  # 300 seconds = 5 minutes
+# SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+# SESSION_TIMEOUT_REDIRECT = '/accounts/login/'  # redirect to whatever page
 
 ROOT_URLCONF = 'project.urls'
 
@@ -158,9 +157,9 @@ MESSAGE_TAGS = {
 
 
 # SMTP CONFIGURATION
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USER_TLS = config('EMAIL_USER_TLS', cast=bool)
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USER_TLS = config('EMAIL_USER_TLS', cast=bool)
 

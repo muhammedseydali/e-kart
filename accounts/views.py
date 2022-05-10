@@ -1,6 +1,5 @@
 
 from email.message import EmailMessage
-import imp
 from django import urls
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
@@ -16,7 +15,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
-import requests
+from django.http import request
+
 # Create your views here.
 
 def register(request):
@@ -80,7 +80,7 @@ def login(request):
             messages.success(request,'you are now logged in')
             url = request.META.get('HTTP_REFER')
             try:
-                query = requests.utils.urlparse(url).query
+                query = request.utils.urlparse(url).query
                 params = dict(x.split('=')for x in query.split('&'))
                 if 'next' in params:
                     nextPage = params['next']
