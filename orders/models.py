@@ -1,7 +1,7 @@
-import imp
-from pickle import TRUE
+from operator import mod
 from pyexpat import model
 from statistics import mode
+from store.models import Product
 from django.db import models
 from accounts.models import Account
 # Create your models here.
@@ -20,10 +20,10 @@ class Payment(models.Model):
 
 class Order(models.Model):
     STATUS = (
-        ('New', 'New')
-        ('Accepted','Accepted')
-        ('Completed','Completed')
-        ('Cancelled','Cancelled')
+        ('New', 'New'),
+        ('Accepted','Accepted'),
+        ('Completed','Completed'),
+        ('Cancelled','Cancelled'),
     )
 
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
@@ -42,7 +42,26 @@ class Order(models.Model):
     order_total =models.FloatField()
     tax= models.FloatField()
     status = models.CharField(max_length=50, choices=STATUS, default='New')
-    ip = models.CharField(max_length=50. blank=True)
+    ip = models.CharField(max_length=50, blank=True)
     is_ordered = models.BooleanField(default=False)
-    created_at = models.BooleanField(auto_now_add=True)   
+    created_at = models.DateTimeField(auto_now_add=True)   
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.first_name
+
+
+class OrderProduct(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    Payment = models.ForeignKey(Payment,on_delete=models.SET_NULL, blank=True, null=True)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    product_price = models.FloatField()
+    ordered = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self):
+        return self.product.product_name 
