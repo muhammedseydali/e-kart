@@ -19,6 +19,33 @@ from django.http import request
 
 # Create your views here.
 
+@login_required(login_url='login')
+def user_dashboard(request):
+    user=Account.objects.get(email=request.user)
+    order_count=Order.objects.filter(user=request.user).count()
+    
+    cancelled_order_count=Order.objects.filter(user=request.user,status='Cancelled').count()
+    import decimal
+
+    decimal.getcontext().prec = 2
+
+    
+    try:
+        customer_rating=decimal.Decimal(order_count-cancelled_order_count)/decimal.Decimal(order_count)
+    except:
+        customer_rating=1
+    customer_rating_percent = customer_rating*100
+    customer_rating=customer_rating*5
+    
+    context={
+        'user': user,
+        'order_count':order_count,
+        'cancelled_order_count':cancelled_order_count,
+        'customer_rating':customer_rating,
+        'customer_rating_percent':customer_rating_percent,
+    }
+    return render(request, 'user_dashboard.html',context)
+    
 def register(request):
     if request.method == 'POST':
         forms = RegistrationForm(request.POST)
