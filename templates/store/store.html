@@ -121,7 +121,7 @@
     </div> 
     
         </aside> 
-        <main class="col-md-9">
+    <main class="col-md-9">
     
     <header class="border-bottom mb-4 pb-3">
             <div class="form-inline">
@@ -139,7 +139,7 @@
                     
                     <a href="{{ product.get_url }}"><img src="{{product.images.url}}"></a>
                     
-                </div> <!-- img-wrap.// -->
+                </div>
                 <figcaption class="info-wrap">
                     <div class="fix-height">
                         
@@ -156,9 +156,8 @@
         {% endfor %}
         {% else %}
         <div>
-            <h2>
-                No Result found
-            </h2>
+            <h2>No Result found</h2>
+
         </div>
     {% endif %}
     </div> 
@@ -191,13 +190,12 @@
       {% endif %}
     </nav>
     
-        </main> 
+    </main> 
     
     </div>
     
     </div>
     </section>
      
-
 {% endblock %}
 <h2> Store page</h2>
