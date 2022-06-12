@@ -55,3 +55,7 @@ def place_order(request, total=0,quantity = 0):
         return redirect('checkout')
     else:
         return render(request,'place_order.html')
+
+
+def payments(request):
+    return render(request, 'payments.html')
