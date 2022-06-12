@@ -1,8 +1,3 @@
-
-
-from tkinter import EXCEPTION
-from unicodedata import category
-from xml.etree.ElementTree import QName
 from django.shortcuts import render,get_object_or_404
 from carts.models import CartItem
 from store.models import Product
