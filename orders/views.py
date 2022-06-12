@@ -49,7 +49,9 @@ def place_order(request, total=0,quantity = 0):
         d = datetime.date.strftime('%Y')
         current_date = d.strftime("%Y%m%d")
         order_number = current_date + str(data.id)
-
+        data.order_number = order_number
+        data.save()
+        return redirect('checkout')
 
 
     return render(request,'place_order.html')
