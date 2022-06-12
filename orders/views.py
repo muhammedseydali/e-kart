@@ -27,6 +27,7 @@ def place_order(request, total=0,quantity = 0):
         # store all the billing informations inside order table
 
         data = Order() 
+        data.user = current_user
         data.first_name = form.cleaned_data('first_name')
         data.last_name = form.cleaned_data('last_name')
         data.phone = form.cleaned_data('phone')
@@ -52,6 +53,9 @@ def place_order(request, total=0,quantity = 0):
         data.order_number = order_number
         data.save()
         return redirect('checkout')
+    else:
+        return render(request,'place_order.html')
 
 
-    return render(request,'place_order.html')
+def payments(request):
+    return render(request, 'payments.html')
