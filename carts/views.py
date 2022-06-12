@@ -1,8 +1,3 @@
-
-import imp
-from math import prod
-from statistics import quantiles
-from turtle import color
 from django.shortcuts import redirect, render,get_object_or_404
 from .models import Cart,CartItem
 from store.models import Product

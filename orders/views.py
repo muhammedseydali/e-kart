@@ -1,6 +1,4 @@
 from datetime import datetime
-from lib2to3.pgen2 import grammar
-from operator import ipow
 from django.shortcuts import redirect, render
 from carts.models import Cart,CartItem
 from .models import Order
@@ -42,6 +40,7 @@ def place_order(request, total=0,quantity = 0):
         data.tax = form.cleaned_data('tax')
         data.ip = request.META.get('REMOTE_ADDR')
         data.save()
+        return redirect('checkout')
 
         # generate order number
         yr = int(datetime.date.today().strftime('%Y'))
@@ -53,5 +52,6 @@ def place_order(request, total=0,quantity = 0):
         data.order_number = order_number
         data.save()
         return redirect('checkout')
+
 
     return render(request,'place_order.html')
