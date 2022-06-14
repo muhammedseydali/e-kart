@@ -1,8 +1,3 @@
-
-
-from tkinter import EXCEPTION
-from unicodedata import category
-from xml.etree.ElementTree import QName
 from django.shortcuts import render,get_object_or_404
 from carts.models import CartItem
 from store.models import Product
@@ -61,6 +56,7 @@ def search(request):
         if keyword:
             products = Product.objects.order_by('-crated_date').filter(Q(description__icontains=keyword) 
             | Q(product_name__icontains=keyword))
+  
             product_count = products.count()
         context = {
             'products':products,
