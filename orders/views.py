@@ -13,14 +13,14 @@ def place_order(request, total=0,quantity = 0):
     if cart_count <=0:
         return redirect('store')
 
-        grand_total = 0
-        tax = 0
-        for cart_items in cart_items:
-            total += (cart_items.product.price * cart_items.quantity)
-            quantity += cart_items.quantity
+    grand_total = 0
+    tax = 0
+    for cart_items in cart_items:
+        total += (cart_items.product.price * cart_items.quantity)
+        quantity += cart_items.quantity
 
-        tax = (2 * total)/100
-        grand_total = total + tax    
+    tax = (2 * total)/100
+    grand_total = total + tax    
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
