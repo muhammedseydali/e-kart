@@ -2,13 +2,23 @@
 
 <section class="section-content padding-y bg">
     <div class="container">
+
+
     <div class="row">
+        <h4 class="text-center mb-10">Review Your Order and make Payment </h4>
         <aside class="col-lg-8">
-    <div class="card">
-        <div class="card-header">Billing Address</div>
+        <div class="card">
+        <h5 class="card-header">Billing Address</h5>
         <div class="card-body">
             <p class="card-text">{{ order.full_name }}</p>
             <p class="card-text">{{ order.full_address }}</p>
+            <p class="card-text">{{ order.city }} {{order.state}}</p>
+            <p class="card-text">{{ order.country }}</p>
+            <p class="card-text">{{ order.email }}</p>
+            <p class="card-text">{{ order.phone }}</p>
+           {% if order.order_note %}
+                <b>order note </b>{{order.order_note}}
+           {% endif %}     
         </div>
     </div>
     <div class="card">
