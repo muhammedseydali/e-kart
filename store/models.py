@@ -1,10 +1,8 @@
-
-from pyexpat import model
-from statistics import mode
 from unicodedata import category
 from django.db import models
 from category.models import Category
 from django.urls import reverse
+from store.models import Account
 
 # Create your models here.
 class Product(models.Model):
