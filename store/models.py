@@ -57,3 +57,8 @@ class Product(models.Model):
 
 #     def __unicode__(self):
 #         return self.product      
+
+class ReviewRating(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=100, blank=True)
