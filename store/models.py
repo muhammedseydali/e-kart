@@ -38,8 +38,7 @@ class Product(models.Model):
 
 # variation_category_choice = (
 #     ('color', 'color'),
-#     ('size','size'),
-# )        
+     
 
 # class Variation(models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE) 
